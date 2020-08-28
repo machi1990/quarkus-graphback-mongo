@@ -7,7 +7,9 @@ This app is highly based on the example given in [Using the Quarkus Mongo Client
 
 The idea is to leverage the Mongo client provided by the extension and use some of [Graphback capabilities](https://graphback.dev/docs/crud/overview) 
 to expose a [GraphQL Crud API](https://graphqlcrud.org/).
-   
+
+> NOTE: The app does not follow a normal Quarkus application and thus a normal [Quarkus application Lifecycle](https://quarkus.io/guides/lifecycle) is not respected meaning resources 
+> like Mongo Connection may leak as they are not properly closed.     
 
 ## Running 
 
@@ -116,4 +118,5 @@ mutation {
 This was an exercise I decided to kickstart my Learning Day that my company accorded to all employee. Combining my experiences in both of these frameworks was fun. 
 1. It should be possible to make the data provider generic enough so that it work with any kind of business model and more than one business model.
 2. Extend the data provider with filtering capabilities
-3. One possible paths that this may lead is to use the [Debezium Extension](https://debezium.io/documentation/reference/integrations/outbox.html) and use it to setup Graphback Subscriptions. 
+3. Quarkus resources lifecycle management
+4. One possible paths that this may lead is to use the [Debezium Extension](https://debezium.io/documentation/reference/integrations/outbox.html) and use it to setup Graphback Subscriptions. 
