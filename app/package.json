@@ -1,0 +1,25 @@
+{
+  "name": "quarkus-graphback-mongo",
+  "version": "0.0.0",
+  "description": "A sample fruit application showing Quarkus and Graphback interaction using GraalJS",
+  "author": {
+    "name": "Manyanda Chitimbo",
+    "email": "manyanda.chitimbo@gmail.com",
+    "url": "https://github.com/machi1990"
+  },
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "$GRAALVM_HOME/bin/node --jvm --vm.Djava.util.logging.manager=org.jboss.logmanager.LogManager --vm.cp=../target/quarkus-graphback-mongo-1.0-SNAPSHOT-runner.jar index.js"
+  },
+  "license": "Apache 2.0",
+  "dependencies": {
+    "apollo-server-express": "2.16.1",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "graphback": "0.16.0-beta4",
+    "@graphback/core": "0.16.0-beta4",
+    "escape-string-regexp": "4.0.0",
+    "graphql": "15.3.0"
+  }
+}
