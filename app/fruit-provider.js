@@ -42,6 +42,8 @@ class FruitDataProvider {
   }
 
   batchRead(relationField, ids, filter) {
+    filter = filter || {};
+    filter[relationField] = {$in: ids};
     const result = JSON.parse(JSON.stringify(this.findBy(filter)));
     return ids.map((objId) => {
       const objectsForId = [];
