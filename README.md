@@ -116,7 +116,7 @@ mutation {
 # Conlusion
 
 This was an exercise I decided to kickstart my Learning Day that my company accorded to all employee. Combining my experiences in both of these frameworks was fun. 
-1. It should be possible to make the data provider generic enough so that it work with any kind of business model and more than one business model.
-2. Extend the data provider with filtering capabilities
-3. Quarkus resources lifecycle management
-4. One possible paths that this may lead is to use the [Debezium Extension](https://debezium.io/documentation/reference/integrations/outbox.html) and use it to setup Graphback Subscriptions. 
+- [ ] It should be possible to make the data provider generic enough so that it work with any kind of business model and more than one business model.
+- [x] Extend the data provider with filtering capabilities
+- [ ] Quarkus resources lifecycle management
+- [ ] One possible paths that this may lead is to use the [Debezium Extension](https://debezium.io/documentation/reference/integrations/outbox.html) and use it to setup Graphback Subscriptions. 

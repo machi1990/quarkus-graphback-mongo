@@ -1,7 +1,7 @@
 const escapeRegex = require("escape-string-regexp");
 const { metadataMap } = require("@graphback/core");
 
-const { fieldNames } =  metadataMap;
+const { fieldNames } = metadataMap;
 
 const AND_FIELD = 'and';
 const OR_FIELD = 'or';
@@ -24,7 +24,7 @@ const operatorMap = {
 // A map of functions to transform mongodb incompatible operators
 // Each function returns pairs of a key and an object for that key
 const operatorTransform = {
-  between: (values)=> {
+  between: (values) => {
     values.sort();
 
     return [
@@ -55,12 +55,12 @@ const operatorTransform = {
       ['$regex', new RegExp(escapeRegex(value), 'g')]
     ]
   },
-  startsWith: (value)=> {
+  startsWith: (value) => {
     return [
       ['$regex', new RegExp(`^${escapeRegex(value)}`, 'g')]
     ]
   },
-  endsWith: (value)=> {
+  endsWith: (value) => {
     return [
       ['$regex', new RegExp(`${escapeRegex(value)}$`, 'g')]
     ]
@@ -68,7 +68,7 @@ const operatorTransform = {
 }
 
 // Function to check if variable is primitive or a map
-function isPrimitive(test){
+function isPrimitive(test) {
   return ((test instanceof RegExp) || (test !== Object(test)));
 };
 
@@ -161,8 +161,6 @@ function traverse(filter, coerceTSFields) {
 }
 
 module.exports = (filter, coerceTSFields) => {
-  let query = {};
-  if (filter) { query = traverse(filter, coerceTSFields); }
-
-  return query;
+  filter = filter || {};
+  return traverse(filter, coerceTSFields).filter || {};
 }

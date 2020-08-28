@@ -11,11 +11,11 @@ class FruitDataProvider {
   create(data) {
     const fruit = new this.Fruit(null, data.name, data.description);
     const addedFruit = this.fruitService.add(fruit);
-    return JSON.parse(JSON.stringify(addedFruit)) ;
+    return JSON.parse(JSON.stringify(addedFruit));
   }
 
   update(data) {
-    const {_id, ...rest } = data;
+    const { _id, ...rest } = data;
     return this.fruitService.update(data._id.toString(), JSON.stringify({
       $set: rest
     }));
@@ -31,11 +31,13 @@ class FruitDataProvider {
   }
 
   count(filter) {
-    return this.fruitService.count(JSON.stringify(queryBuilder(filter, false)));
+    const query = queryBuilder(filter, false);
+    return this.fruitService.count(JSON.stringify(query));
   }
 
   findBy(filter) {
-    const fruits = this.fruitService.list(JSON.stringify(queryBuilder(filter, false)));
+    const query = queryBuilder(filter, false);
+    const fruits = this.fruitService.list(JSON.stringify(query));
     return JSON.parse(JSON.stringify(fruits));
   }
 

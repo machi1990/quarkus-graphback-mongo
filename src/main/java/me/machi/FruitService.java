@@ -1,6 +1,7 @@
 package me.machi;
 
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -25,10 +26,10 @@ public class FruitService {
     @Inject
     MongoClient mongoClient;
 
-    // TODO filter
     public List<Fruit> list(String filter) {
         List<Fruit> list = new ArrayList<>();
-        MongoCursor<Fruit> cursor = getCollection().find().iterator();
+        BasicDBObject object = BasicDBObject.parse(filter);
+        MongoCursor<Fruit> cursor = getCollection().find(object).iterator();
         try {
             while (cursor.hasNext()) {
                 list.add(cursor.next());
@@ -71,9 +72,9 @@ public class FruitService {
                 .findOneAndUpdate(bson, BsonDocument.parse(value), findOneAndUpdateOptions);
     }
 
-    // TODO filters
     public long count(String filter) {
-        return getCollection().countDocuments();
+        BasicDBObject object = BasicDBObject.parse(filter);
+        return getCollection().countDocuments(object);
     }
 
     private MongoCollection<Fruit> getCollection() {
